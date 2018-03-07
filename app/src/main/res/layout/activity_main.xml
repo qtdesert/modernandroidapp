@@ -21,7 +21,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.083"
-            tools:text="Modern Android app" />
+            tools:text="@{repository.repositoryName}" />
 
         <TextView
             android:id="@+id/repository_has_issues"
@@ -55,7 +55,7 @@
             tools:text="Quentin Désert" />
 
         <TextView
-            android:id="@+id/number_of_starts"
+            android:id="@+id/number_of_stars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -71,5 +71,11 @@
             tools:text="0 stars" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <data>
+        <variable
+            name="repository"
+            type="com.example.desert.modernandroidapp.Repository" />
+    </data>
 
 </layout>
