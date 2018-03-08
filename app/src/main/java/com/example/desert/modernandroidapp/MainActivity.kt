@@ -10,18 +10,12 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
+    var repository = Repository("Android repos app", "Q", 697, true)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.apply {
-            repositoryName.text = "Android repositories app"
-            repositoryOwner.text = "Quentin"
-            numberOfStars.text = "1000 stars"
-        }
-
-        var repository = Repository("Android repos app", "Q", 697, true)
-
         binding.repository = repository;
         binding.executePendingBindings()
 
