@@ -12,6 +12,10 @@ class MainActivity : AppCompatActivity() {
 
     var repository = Repository("Android repos app", "Q", 697, true)
 
+    object Constants {
+        const val DELAY: Long = 2000;
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,6 +27,6 @@ class MainActivity : AppCompatActivity() {
             repository.repositoryName = "New Name"
             binding.repository = repository;
             binding.executePendingBindings()
-        }, 2000)
+        }, Constants.DELAY)
     }
 }
