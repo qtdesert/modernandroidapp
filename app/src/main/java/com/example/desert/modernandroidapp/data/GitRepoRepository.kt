@@ -15,10 +15,6 @@ class GitRepoRepository {
     }
 }
 
-interface OnDataReadyCallback {
-    fun onDataReady(data: String)
-}
-
 interface onRepositoryReadyCallback {
     fun onDataReady(data: ArrayList<Repository>)
 }
