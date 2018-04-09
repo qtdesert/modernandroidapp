@@ -1,8 +1,9 @@
-package com.example.desert.modernandroidapp
+package com.example.desert.modernandroidapp.data
 
 import android.os.Handler
+import com.example.desert.modernandroidapp.ui.uimodels.Repository
 
-class RepoModel {
+class GitRepoRepository {
 
     fun getRepositories(onRepositoryReadyCallback: onRepositoryReadyCallback) {
         var arrayList = ArrayList<Repository>()

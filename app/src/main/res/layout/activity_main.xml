@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.desert.modernandroidapp.MainViewModel" />
+            type="com.example.desert.modernandroidapp.ui.screens.MainViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.desert.modernandroidapp.MainActivity">
+        tools:context="com.example.desert.modernandroidapp.ui.screens.MainActivity">
 
         <ProgressBar
             android:id="@+id/loading"

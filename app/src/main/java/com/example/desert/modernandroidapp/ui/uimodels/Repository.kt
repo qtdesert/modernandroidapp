@@ -1,7 +1,8 @@
-package com.example.desert.modernandroidapp
+package com.example.desert.modernandroidapp.ui.uimodels
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
+import com.example.desert.modernandroidapp.BR
 
 class Repository (repositoryName: String?, var repositoryOwner: String?, var numberOfStars: Int?,
                   var hasIssues: Boolean = false) : BaseObservable() {

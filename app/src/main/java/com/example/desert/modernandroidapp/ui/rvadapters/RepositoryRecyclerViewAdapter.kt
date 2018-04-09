@@ -1,8 +1,9 @@
-package com.example.desert.modernandroidapp;
+package com.example.desert.modernandroidapp.ui.rvadapters;
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.example.desert.modernandroidapp.ui.uimodels.Repository
 import com.example.desert.modernandroidapp.databinding.RvItemRepositoryBinding
 
 class RepositoryRecyclerViewAdapter(private var items: ArrayList<Repository>,

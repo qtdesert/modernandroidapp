@@ -1,4 +1,4 @@
-package com.example.desert.modernandroidapp
+package com.example.desert.modernandroidapp.ui.screens
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -6,6 +6,9 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import com.example.desert.modernandroidapp.R
+import com.example.desert.modernandroidapp.ui.uimodels.Repository
+import com.example.desert.modernandroidapp.ui.rvadapters.RepositoryRecyclerViewAdapter
 import com.example.desert.modernandroidapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), RepositoryRecyclerViewAdapter.OnItemClickListener {

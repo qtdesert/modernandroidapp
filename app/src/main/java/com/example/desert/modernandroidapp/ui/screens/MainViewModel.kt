@@ -1,12 +1,15 @@
-package com.example.desert.modernandroidapp
+package com.example.desert.modernandroidapp.ui.screens
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import com.example.desert.modernandroidapp.data.GitRepoRepository
+import com.example.desert.modernandroidapp.ui.uimodels.Repository
+import com.example.desert.modernandroidapp.data.onRepositoryReadyCallback
 
 class MainViewModel : ViewModel() {
 
-    var repoModel: RepoModel = RepoModel()
+    var gitRepoRepository: GitRepoRepository = GitRepoRepository()
 
     val text = ObservableField<String>()
     val isLoading = ObservableField<Boolean>()
@@ -15,7 +18,7 @@ class MainViewModel : ViewModel() {
 
     fun loadRepositories() {
         isLoading.set(true)
-        repoModel.getRepositories(object : onRepositoryReadyCallback {
+        gitRepoRepository.getRepositories(object : onRepositoryReadyCallback {
             override fun onDataReady(data: ArrayList<Repository>) {
                 isLoading.set(false)
                 repositories.value = data
