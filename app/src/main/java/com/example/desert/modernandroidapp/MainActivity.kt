@@ -1,5 +1,6 @@
 package com.example.desert.modernandroidapp
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -10,6 +11,7 @@ import com.example.desert.modernandroidapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), RepositoryRecyclerViewAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private val repositoryRecyclerViewAdapter = RepositoryRecyclerViewAdapter(arrayListOf(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,9 @@ class MainActivity : AppCompatActivity(), RepositoryRecyclerViewAdapter.OnItemCl
         binding.executePendingBindings()
 
         binding.repositoryRv.layoutManager = LinearLayoutManager(this)
-        binding.repositoryRv.adapter = RepositoryRecyclerViewAdapter(viewModel.repositories, this)
+        binding.repositoryRv.adapter = repositoryRecyclerViewAdapter
+        viewModel.repositories.observe(this,
+                Observer<ArrayList<Repository>> { it?.let { repositoryRecyclerViewAdapter.replaceData(it) } })
     }
 
     override fun onItemClick(position: Int) {
