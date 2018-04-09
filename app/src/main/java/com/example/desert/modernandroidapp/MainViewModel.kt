@@ -10,12 +10,14 @@ class MainViewModel : ViewModel() {
     val text = ObservableField<String>()
     val isLoading = ObservableField<Boolean>()
 
-    fun refresh() {
+    var repositories = ArrayList<Repository>()
+
+    fun loadRepositories() {
         isLoading.set(true)
-        repoModel.refreshData(object : OnDataReadyCallback {
-            override fun onDataReady(data: String) {
+        repoModel.getRepositories(object : onRepositoryReadyCallback {
+            override fun onDataReady(data: ArrayList<Repository>) {
                 isLoading.set(false)
-                text.set(data)
+                repositories = data
             }
         })
     }
