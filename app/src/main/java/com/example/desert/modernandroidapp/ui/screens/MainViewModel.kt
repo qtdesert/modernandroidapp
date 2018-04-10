@@ -7,7 +7,8 @@ import android.databinding.ObservableField
 import com.example.desert.modernandroidapp.androidmanagers.NetManager
 import com.example.desert.modernandroidapp.data.GitRepoRepository
 import com.example.desert.modernandroidapp.ui.uimodels.Repository
-import com.example.desert.modernandroidapp.data.OnRepositoryReadyCallback
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -20,10 +21,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun loadRepositories() {
         isLoading.set(true)
-        gitRepoRepository.getRepositories(object : OnRepositoryReadyCallback {
-            override fun onDataReady(data: ArrayList<Repository>) {
-                isLoading.set(false)
+        gitRepoRepository.getRepositories().subscribe(object: Observer<ArrayList<Repository>> {
+            override fun onSubscribe(d: Disposable) {
+                //TODO
+            }
+
+            override fun onError(e: Throwable) {
+                //TODO
+            }
+
+            override fun onNext(data: ArrayList<Repository>) {
                 repositories.value = data
+            }
+
+            override fun onComplete() {
+                isLoading.set(false)
             }
         })
     }
