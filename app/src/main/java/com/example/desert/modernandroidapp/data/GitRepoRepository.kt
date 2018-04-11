@@ -12,8 +12,11 @@ class GitRepoRepository(val netManager: NetManager) {
     fun getRepositories() : Observable<ArrayList<Repository>> {
         netManager.isConnectedToInternet?.let {
             if (it) {
-//                localDataSource.saveRepositories(data) //TODO
-                return remoteDataSource.getRepositories()
+//                return remoteDataSource.getRepositories().flatMap {
+//                    return@flatMap localDataSource.saveRepositories(it)
+//                            .toSingleDefault(it)
+//                            .toObservable()
+//                }
             }
         }
         return localDataSource.getRepositories()
