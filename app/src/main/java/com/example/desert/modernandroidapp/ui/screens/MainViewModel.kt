@@ -1,10 +1,8 @@
 package com.example.desert.modernandroidapp.ui.screens
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
-import com.example.desert.modernandroidapp.androidmanagers.NetManager
 import com.example.desert.modernandroidapp.data.GitRepoRepository
 import com.example.desert.modernandroidapp.ui.uimodels.Repository
 import com.example.desert.modernandroidapp.utility.extensions.plusAssign
@@ -12,10 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-    var gitRepoRepository: GitRepoRepository = GitRepoRepository(NetManager(getApplication()))
+class MainViewModel @Inject constructor(var gitRepoRepository: GitRepoRepository) : ViewModel() {
 
     val text = ObservableField("old data")
     val isLoading = ObservableField(false)
