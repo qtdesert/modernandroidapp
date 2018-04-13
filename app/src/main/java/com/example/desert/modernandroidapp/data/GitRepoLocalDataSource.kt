@@ -1,7 +1,9 @@
 package com.example.desert.modernandroidapp.data
 
 import com.example.desert.modernandroidapp.ui.uimodels.Repository
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import java.util.concurrent.TimeUnit
 
 class GitRepoLocalDataSource {
@@ -15,7 +17,7 @@ class GitRepoLocalDataSource {
         return Observable.just(arrayList).delay(2, TimeUnit.SECONDS)
     }
 
-    fun saveRepositories(arrayList: ArrayList<Repository>){
-        //TODO: save repositories in DB
+    fun saveRepositories(arrayList: ArrayList<Repository>): Completable {
+        return Single.just(1).delay(1, TimeUnit.SECONDS).toCompletable()
     }
 }

@@ -13,11 +13,11 @@ class GitRepoRepository @Inject constructor(val netManager: NetManager) {
     fun getRepositories() : Observable<ArrayList<Repository>> {
         netManager.isConnectedToInternet?.let {
             if (it) {
-//                return remoteDataSource.getRepositories().flatMap {
-//                    return@flatMap localDataSource.saveRepositories(it)
-//                            .toSingleDefault(it)
-//                            .toObservable()
-//                }
+                return remoteDataSource.getRepositories().flatMap {
+                    return@flatMap localDataSource.saveRepositories(it)
+                            .toSingleDefault(it)
+                            .toObservable()
+                }
             }
         }
         return localDataSource.getRepositories()
